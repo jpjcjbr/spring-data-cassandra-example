@@ -1,7 +1,5 @@
 package example;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +16,6 @@ import org.springframework.data.cassandra.repository.config.EnableCassandraRepos
 @EnableCassandraRepositories(basePackages = { "example" })
 public class CassandraConfiguration extends AbstractCassandraConfiguration {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CassandraConfiguration.class);
-
     @Autowired
     private Environment environment;
 
@@ -28,6 +24,7 @@ public class CassandraConfiguration extends AbstractCassandraConfiguration {
         CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
         cluster.setContactPoints(environment.getProperty("cassandra.contactpoints"));
         cluster.setPort(Integer.parseInt(environment.getProperty("cassandra.port")));
+//        cluster.setAuthProvider(new PlainTextAuthProvider("cassandra", "cassandra"));
         return cluster;
     }
 
