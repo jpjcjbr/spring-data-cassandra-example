@@ -1,30 +1,24 @@
 package example;
 
-import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.function.Function;
-import org.apache.spark.api.java.function.Function2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.datastax.spark.connector.japi.CassandraJavaUtil;
-import com.datastax.spark.connector.japi.CassandraRow;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CassandraConfiguration.class)
-public class SummarizeWithSparkTest {
+public class SummarizeWithSpark2Test {
 
 	@Test
 	public void test() {
 		SparkConf conf = new SparkConf(true);
-        conf.setMaster("local[4]");
-//        conf.setMaster("spark://MacBook-Pro.local:7077");
+        conf.setMaster("spark://MacBook-Pro.local:7077");
         conf.setAppName("TesteJP");
 //        conf.set("spark.cassandra.connection.host", "45.55.242.193");
 //        conf.set("spark.cassandra.auth.username", "cassandra");
@@ -36,8 +30,9 @@ public class SummarizeWithSparkTest {
 		
 		long time = System.currentTimeMillis();
 		
-		Map<String, Long> reduce = CassandraJavaUtil.javaFunctions(sc).cassandraTable("events", "event")
-				.map(new MapFunction())
+		Map<String, Long> reduce = CassandraJavaUtil.javaFunctions(sc).cassandraTable("events", "event2")
+//				.map(new MapFunction2(Sets.newHashSet(1L)))
+				.map(new MapFunction2WithFilter())
 				.reduce(new ReduceFunction());
         
         System.out.println("reduced in " + (System.currentTimeMillis() - time));

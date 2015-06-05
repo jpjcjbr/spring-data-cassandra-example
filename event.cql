@@ -29,3 +29,14 @@ CREATE TABLE event (
   indicator20 bigint,
   PRIMARY KEY (sku)
 );
+
+
+CREATE TABLE event2 (
+  sku bigint,
+  category1 bigint,
+  category2 bigint,
+  category3 bigint,
+  category4 bigint,
+  indicators map<text, bigint>,
+  PRIMARY KEY (sku)
+);
