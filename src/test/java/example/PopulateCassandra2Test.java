@@ -23,9 +23,9 @@ public class PopulateCassandra2Test {
 
     private static final long NUMBER_OF_CATEGORIES = 100L;
 
-	private static final long CHUNK_SIZE = 10000L;
+	private static final long CHUNK_SIZE = 10L;
 
-	private static final long TOTAL_EVENTS = 2000000L;
+	private static final long TOTAL_EVENTS = 20L;
 
 	@Autowired
     private CassandraAdminOperations adminTemplate;

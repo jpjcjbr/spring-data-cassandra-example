@@ -23,7 +23,7 @@ public class MapFunction2WithFilter implements Function<CassandraRow, Map<String
 	public MapFunction2WithFilter() {
 	}
 
-	public Map<String, Long> call(CassandraRow v1) throws Exception {
+	public Map<String, Long> call(CassandraRow v1) {
 		HashMap<String, Long> map = new HashMap<String, Long>();
 		
 		Map<Object, Object> indicators = v1.getMap("indicators");

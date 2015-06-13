@@ -23,10 +23,10 @@ public class SummarizeWithSparkTest {
 	@Test
 	public void test() {
 		SparkConf conf = new SparkConf(true);
-        conf.setMaster("local[4]");
+        conf.setMaster("spark://anil:7077");
 //        conf.setMaster("spark://MacBook-Pro.local:7077");
         conf.setAppName("TesteJP");
-//        conf.set("spark.cassandra.connection.host", "45.55.242.193");
+        conf.set("spark.cassandra.connection.host", "172.17.9.172");
 //        conf.set("spark.cassandra.auth.username", "cassandra");
 //        conf.set("spark.cassandra.auth.password", "cassandra");
 		JavaSparkContext sc = new JavaSparkContext(conf);

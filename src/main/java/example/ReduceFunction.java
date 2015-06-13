@@ -12,7 +12,7 @@ public class ReduceFunction implements Function2<Map<String, Long>, Map<String, 
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Map<String, Long> call(Map<String, Long> event1, Map<String, Long> event2) throws Exception {
+	public Map<String, Long> call(Map<String, Long> event1, Map<String, Long> event2) {
 		
 		return mergeAndAdd(event1, event2);
 	}

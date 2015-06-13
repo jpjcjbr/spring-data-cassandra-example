@@ -18,9 +18,9 @@ public class SummarizeWithSpark2Test {
 	@Test
 	public void test() {
 		SparkConf conf = new SparkConf(true);
-        conf.setMaster("spark://MacBook-Pro.local:7077");
+		conf.setMaster("spark://cassandra:7077");
         conf.setAppName("TesteJP");
-//        conf.set("spark.cassandra.connection.host", "45.55.242.193");
+        conf.set("spark.cassandra.connection.host", "104.131.184.53");
 //        conf.set("spark.cassandra.auth.username", "cassandra");
 //        conf.set("spark.cassandra.auth.password", "cassandra");
 		JavaSparkContext sc = new JavaSparkContext(conf);
